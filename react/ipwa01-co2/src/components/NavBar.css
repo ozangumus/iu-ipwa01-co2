@@ -1,0 +1,24 @@
+  /* CSS-Styling für das Logo auf der rechten Seite */
+.logo-right {
+    display: inline-flex !important;
+    float: right;
+    object-fit: contain;
+    max-width: 100%;
+  }
+  
+  /* CSS-Styling für das Logo auf der linken Seite */
+  .logo-left {
+    display: inline-flex !important;
+    float: left;
+    object-fit: contain;
+    max-width: 100%;
+  }
+
+  .navbar-rtl {
+    text-align: right;
+  }
+  
+  /* CSS-Styling für die Navigationsleiste in links-nach-rechts-Schriftkultur */
+  .navbar-ltr {
+    text-align: left;
+  }
