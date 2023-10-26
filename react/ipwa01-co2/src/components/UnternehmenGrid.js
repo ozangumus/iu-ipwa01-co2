@@ -1,21 +1,36 @@
-import * as React from 'react';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-
-const rows: GridRowsProp = [
-  { id: 1, col1: 'Hello', col2: 'World' },
-  { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
-  { id: 3, col1: 'MUI', col2: 'is Amazing' },
-];
+import React, { useEffect, useState } from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import axios from 'axios';
 
 const columns: GridColDef[] = [
-  { field: 'col1', headerName: 'Column 1', width: 150 },
-  { field: 'col2', headerName: 'Column 2', width: 150 },
+  { field: 'Name', headerName: 'Unternehmen', width: 150 },
+  { field: 'Footprint', headerName: 'Footprint', width: 150 },
 ];
 
 export default function App() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Daten aus dem Server abrufen
+    axios.get('http://localhost:3000/api/data?type=Unternehmen') // Beachte, dass dies zur API-Route im Node.js-Server führt
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Fehler beim Abrufen der Daten:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div style={{ height: 300, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      {loading ? (
+        <p>Lade Daten...</p>
+      ) : (
+        <DataGrid rows={data} columns={columns} />
+      )}
     </div>
   );
 }
