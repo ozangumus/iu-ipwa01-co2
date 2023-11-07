@@ -1,6 +1,6 @@
 import React from 'react';
 
-function datenschutz() {
+function Datenschutz() {
     return (
         <div className="container">
             <h2>Datenschutzerklärung</h2>
@@ -16,12 +16,10 @@ function datenschutz() {
             <p>
                 <strong>2. Datenerfassung auf unserer Website</strong>
             </p>
-            <h3>Cookies</h3>
+            <h5>Cookies</h5>
             <p>
                 Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.
             </p>
-            <!-- Weitere Informationen zu Ihren Rechten und der Verwendung von Cookies -->
-            <!-- finden Sie in unserer vollständigen Datenschutzerklärung auf der Website. -->
             <p>
                 <strong>3. Datenschutzbeauftragter</strong>
             </p>
@@ -39,27 +37,8 @@ function datenschutz() {
                 <br />
                 E-Mail: datenschutz@co2footprint.com
             </p>
-            <!-- Weitere Kontaktmöglichkeiten -->
-            <p>
-                <strong>4. Hinweis zur verantwortlichen Stelle</strong>
-            </p>
-            <p>
-                Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
-            </p>
-            <p>
-                Co² Footprint GmbH
-                <br />
-                Musterstraße 123
-                <br />
-                12345 Musterstadt
-                <br />
-                Telefon: (01234) 567 89 0
-                <br />
-                E-Mail: info@co2footprint.com
-            </p>
-            <!-- Weitere Kontaktmöglichkeiten -->
         </div>
     );
 }
 
-export default datenschutz;
+export default Datenschutz;

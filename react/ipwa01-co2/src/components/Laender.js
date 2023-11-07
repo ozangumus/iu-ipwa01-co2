@@ -22,25 +22,63 @@ function Laender() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = (e) => {
+  const translateCountryName = (germanCountryName) => {
+    const translations = {
+      "Deutschland": "Germany",
+      "Spanien": "Spain",
+      "Italien": "Italy",
+      "Türkei": "Turkey",
+      "Portugal": "Portugal",
+      "Griechenland": "Greece",
+      "Norwegen": "Norway",
+      "Schweden": "Sweden",
+      "China": "China",
+      "India": "India",
+      "Mexiko": "Mexico",
+      "Südafrika": "South Africa" 
+      // Weitere Übersetzungen hier hinzufügen
+    };
+    return translations[germanCountryName] || germanCountryName;
+  };
+
+
+  const checkCountryExistence = async (countryName) => {
+    try {
+      const englishCountryName = translateCountryName(countryName);
+
+      const response = await axios.get(`https://restcountries.com/v3.1/name/${englishCountryName}`);
+      const countries = response.data;
+      return countries.length > 0;
+    } catch (error) {
+      console.error('Fehler beim Überprüfen des Landes:', error);
+      return false;
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      axios
-        .post("http://localhost:3000/api/data?type=Laender", {
-          land: land,
-          footprint: parseFloat(footprint),
-        })
-        .then((response) => {
-          console.log("Daten wurden gespeichert", response.data);
-          setLand("");
-          setFootprint("");
+      const countryExists = await checkCountryExistence(land);
+      if (countryExists) {
+        axios
+          .post("http://localhost:3000/api/data?type=Laender", {
+            land: land,
+            footprint: parseFloat(footprint),
+          })
+          .then((response) => {
+            console.log("Daten wurden gespeichert", response.data);
+            setLand("");
+            setFootprint("");
 
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.error("Fehler beim Speichern der Daten:", error);
-        });
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Fehler beim Speichern der Daten:", error);
+          });
+      } else {
+        alert('Dieses Land existiert nicht.');
+      }
     }
   };
 

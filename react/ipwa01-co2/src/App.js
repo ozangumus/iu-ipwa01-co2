@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Laender from "./components/Laender";
 import Unternehmen from "./components/Unternehmen";
 import Impressum from "./components/impressum";
+import Datenschutz from "./components/datenschutz";
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
                     <Route path="/länder" element={<Laender />} />
                     <Route path="/unternehmen" element={<Unternehmen />} />
                     <Route path="/impressum" element={<Impressum />} />
-                    <Route path="/datenschutz" element={<Impressum />} />
+                    <Route path="/datenschutz" element={<Datenschutz />} />
                 </Routes>
             </div>
             <Footer/>
