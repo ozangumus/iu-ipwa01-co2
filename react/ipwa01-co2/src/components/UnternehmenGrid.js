@@ -13,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     // Daten aus dem Server abrufen
-    axios.get('http://localhost:3000/api/data?type=Unternehmen') // Beachte, dass dies zur API-Route im Node.js-Server führt
+    axios.get('http://localhost:3000/api/data?type=Unternehmen') 
       .then((response) => {
         setData(response.data);
         setLoading(false);

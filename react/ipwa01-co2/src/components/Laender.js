@@ -36,7 +36,6 @@ function Laender() {
       "India": "India",
       "Mexiko": "Mexico",
       "Südafrika": "South Africa" 
-      // Weitere Übersetzungen hier hinzufügen
     };
     return translations[germanCountryName] || germanCountryName;
   };
